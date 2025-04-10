@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Información de Cumpleaños</title>
+  <link rel="stylesheet" href="style2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    #playMusicBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #00cc66;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ff88;
+      z-index: 999;
+    }
+
+    #playMusicBtn:hover {
+      background-color: #00aa55;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Música de fondo -->
+  <audio id="backgroundMusic" loop>
+    <source src="Ben 10  Intro en español  HBO Max.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <!-- Botón para reproducir música -->
+  <button id="playMusicBtn">🎵 Reproducir música</button>
+
+  <div class="box">
+    <h1>¡Feliz Cumpleaños Benjamin! 🎉</h1>
+    <p>Será un día lleno de diversión, juegos y muchas sorpresas.</p>
+  
+    <div class="info-flex">
+      <div class="info-contenido">
+        <p class="destacado">🗓️ Fecha: 26 de abril de 2025</p>
+        <p class="destacado">📍 Lugar: Pasaje Padre Hurtado 180</p>
+        <p class="destacado">🕒 Hora: 4:00 PM</p>
+      </div>
+      <img src="img/ben.png" alt="Ben 10" class="ben-img" />
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('playMusicBtn');
+    const audio = document.getElementById('backgroundMusic');
+
+    btn.addEventListener('click', () => {
+      audio.play();
+      btn.style.display = 'none'; // Oculta el botón una vez que comienza la música
+    });
+
+    // Intenta reproducir automáticamente (puede fallar por políticas del navegador)
+    window.addEventListener('load', () => {
+      audio.play().then(() => {
+        btn.style.display = 'none';
+      }).catch(() => {
+        // El navegador bloqueó la reproducción automática
+        btn.style.display = 'block';
+      });
+    });
+  </script>
+
+</body>
+</html>
